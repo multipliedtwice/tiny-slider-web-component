@@ -1,0 +1,54 @@
+interface EventConfig {
+    type: string;
+    handler: EventListener;
+    target: EventTarget;
+}
+declare class TinySlider extends HTMLElement {
+    private sliderElement;
+    private contentElement;
+    private fill;
+    private _gap;
+    private _transitionDuration;
+    private threshold;
+    private _currentIndex;
+    private shown;
+    private currentScrollPosition;
+    private maxWidth;
+    private sliderWidth;
+    private reachedEnd;
+    private isDragging;
+    private passedThreshold;
+    private movementStartX;
+    private finalScrollPosition;
+    private events;
+    private resizeObserver;
+    private resizeSliderObserver;
+    constructor();
+    private updateStyles;
+    get gap(): string;
+    set gap(value: string);
+    get transitionDuration(): number;
+    set transitionDuration(value: number);
+    get currentIndex(): number;
+    private bindMethods;
+    private toggleEventListeners;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    private goTo;
+    private handleSlotChange;
+    private initProperties;
+    setIndex(index: number): void;
+    private down;
+    private move;
+    private updateSliderPosition;
+    private up;
+    private keydown;
+    private adjustPosition;
+    private setScrollPosition;
+    private setShown;
+    private createResizeObserver;
+    private getItemOffsets;
+    private getContentChildren;
+    private isCurrentSlider;
+    private render;
+}

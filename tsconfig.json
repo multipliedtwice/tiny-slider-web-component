@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2017", // Modern browsers
+    "module": "es2015", // Keep ES modules
+    "outDir": "dist", // Output directory for compiled JavaScript
+    "declaration": true, // Generate .d.ts files
+    "sourceMap": true, // Generate source maps
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enables ES6-style module import interop
+    "moduleResolution": "node", // Module resolution strategy
+    "experimentalDecorators": true, // Enable experimental support for decorators
+    "skipLibCheck": true // Skip type checking of all declaration files (*.d.ts)
+  },
+  "include": [
+    "src/**/*" // Path to your TypeScript files
+  ],
+  "exclude": ["node_modules"]
+}
