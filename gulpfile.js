@@ -1,6 +1,7 @@
 const gulp = require("gulp");
 const ts = require("gulp-typescript");
 const terser = require("gulp-terser");
+const replace = require("gulp-replace");
 
 // Load TypeScript configuration
 const tsProject = ts.createProject("tsconfig.json");
@@ -36,6 +37,8 @@ const methodNames = [
   "currentIndex",
   "shown",
   "maxWidth",
+  "contentElement",
+  "sliderElement",
 ].join("|");
 
 function typescript() {
@@ -46,30 +49,46 @@ function minify() {
   return gulp
     .src("dist/**/*.js")
     .pipe(
+      replace(
+        /(<style>[^<]+<\/style>[\s\S]*?<div class="slider">[\s\S]*?<\/div>[\s\S]*?<\/div>)/g,
+        match => match.replace(/\s{2,}/g, ' ').replace(/\n/g, '')
+      )
+    )
+    .pipe(
       terser({
-        ecma: 2020, // Use ECMAScript 2020
-        module: true, // Enable when minifying an ES6 module
-        toplevel: true, // Enable top level mangling and unused variable dropping
+        ecma: 2020,
+        module: true,
+        toplevel: true,
         compress: {
-          drop_console: true, // Remove console logs for production
-          drop_debugger: true, // Remove debugger statements
+          drop_console: true,
+          drop_debugger: true,
         },
         mangle: {
           properties: {
-            // Only mangle properties that are safe
             regex: new RegExp(methodNames),
           },
         },
         format: {
-          comments: false, // Remove comments
-          beautify: false, // Set to false to minify output
+          comments: false,
+          beautify: false,
         },
-        keep_classnames: false, // Do not keep class names
-        keep_fnames: false, // Do not keep function names
-        safari10: true, // Enable workarounds for Safari 10 bugs
+        keep_classnames: false,
+        keep_fnames: false,
+        safari10: true,
       })
     )
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest("../rememo/client/static/js"));
+  // .pipe(gulp.dest("dist"));
+}
+
+function watchFiles() {
+  gulp.watch("src/**/*.ts", typescript);
+  gulp.watch("dist/**/*.js", minify);
+}
+
+function watchFiles() {
+  gulp.watch("src/**/*.ts", gulp.series(typescript, minify));
 }
 
 exports.default = gulp.series(typescript, minify);
+exports.watch = gulp.series(exports.default, watchFiles);

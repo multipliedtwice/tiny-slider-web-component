@@ -25,6 +25,7 @@
   "homepage": "https://github.com/multipliedtwice/tiny-slider-web-component#readme",
   "devDependencies": {
     "gulp": "^5.0.0",
+    "gulp-replace": "^1.1.4",
     "gulp-terser": "^2.1.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "terser": "^5.0.0",

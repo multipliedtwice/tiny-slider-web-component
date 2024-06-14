@@ -23,6 +23,12 @@ declare class TinySlider extends HTMLElement {
     private events;
     private resizeObserver;
     private resizeSliderObserver;
+    private dotsContainer;
+    private _showDots;
+    static get observedAttributes(): string[];
+    get showDots(): boolean;
+    set showDots(value: boolean);
+    attributeChangedCallback(name: string, oldValue: string, newValue: string): void;
     constructor();
     private updateStyles;
     get gap(): string;
@@ -50,5 +56,7 @@ declare class TinySlider extends HTMLElement {
     private getItemOffsets;
     private getContentChildren;
     private isCurrentSlider;
+    private createDots;
+    private updateDots;
     private render;
 }
