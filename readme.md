@@ -52,3 +52,8 @@ Here's how you can use the slider in your HTML. The example from Svelte, but wil
 	{/each}
 </tiny-slider-web-component>
 ```
+
+Credits:
+- [Super Kick Gym](https://en.bjj-bangkok.com)
+
+- [Rememo](https://rememo.io)
