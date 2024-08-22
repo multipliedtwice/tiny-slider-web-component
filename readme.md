@@ -53,7 +53,7 @@ Here's how you can use the slider in your HTML. The example from Svelte, but wil
 </tiny-slider-web-component>
 ```
 
-Credits:
-- [Super Kick Gym](https://en.bjj-bangkok.com)
+#### Credits:
+- Super Kick Gym - [Brazilian Jiu Jitsu in Bangkok](https://en.bjj-bangkok.com)
 
-- [Rememo](https://rememo.io)
+- Rememo - [Free Task Management and Corporate Chat](https://rememo.io)
